@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Гамма емоцій та почуттів · Чоловіче коло</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Земляне, камінне, ковальне */
+    --bg: #0E0B07;
+    --bg-deep: #0A0805;
+    --bg-card: #15110B;
+    --bg-card-low: #100D08;
+
+    --text: #DDD0B2;
+    --text-dim: #9F8E6E;
+    --text-muted: #6A5C45;
+    --text-faint: #423829;
+
+    --rule: rgba(221, 208, 178, 0.1);
+    --rule-strong: rgba(221, 208, 178, 0.2);
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', 'Garamond', Georgia, serif;
+    min-height: 100vh;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "liga", "kern";
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse 90% 50% at 50% 0%, rgba(176, 110, 50, 0.07), transparent 65%),
+      radial-gradient(ellipse 70% 40% at 50% 100%, rgba(140, 75, 40, 0.05), transparent 65%),
+      repeating-linear-gradient(0deg, transparent 0px, transparent 39px, rgba(221, 208, 178, 0.012) 40px),
+      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 50%, var(--bg-deep) 100%);
+    padding: 56px 44px 44px;
+    overflow-x: hidden;
+  }
+
+  .slide {
+    max-width: 1700px;
+    margin: 0 auto;
+  }
+
+  /* ========== HEADER ========== */
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 36px;
+    position: relative;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 120px; height: 1px;
+    background: var(--rule-strong);
+    transform: translateX(-50%);
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .ornament-line {
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--text-muted), transparent);
+  }
+
+  .ornament-mark {
+    color: var(--text-muted);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+
+  .title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 3.6vw, 50px);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: #E8DAB8;
+    margin-bottom: 18px;
+  }
+
+  .title em {
+    font-style: normal;
+    color: #B98A3A;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto;
+    letter-spacing: 0.01em;
+  }
+
+  /* ========== GRID ========== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (max-width: 1100px) {
+    .grid { grid-template-columns: repeat(2, 1fr); border: 1px solid var(--rule); }
+    body { padding: 32px 18px; }
+  }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  /* ========== STELE (column) ========== */
+  .stele {
+    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card-low) 100%);
+    border-right: 1px solid var(--rule);
+    padding: 32px 24px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stele:last-child { border-right: none; }
+
+  @media (max-width: 1100px) {
+    .stele {
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .stele:nth-child(2n) { border-right: none; }
+    .stele:last-child { border-bottom: none; }
+  }
+
+  /* Numerus on top corner */
+  .numerus {
+    position: absolute;
+    top: 18px; right: 22px;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--text-faint);
+  }
+
+  .stele-head {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .stele-head::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 50%;
+    transform: translateX(-50%);
+    width: 6px; height: 6px;
+    background: var(--accent);
+    transform: translateX(-50%) rotate(45deg);
+    margin-bottom: -4px;
+  }
+
+  .glyph {
+    width: 56px; height: 56px;
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--accent-dim);
+    background: rgba(0, 0, 0, 0.25);
+    position: relative;
+  }
+
+  .glyph::before, .glyph::after {
+    content: '';
+    position: absolute;
+    width: 10px; height: 10px;
+    border: 1px solid var(--accent-dim);
+  }
+
+  .glyph::before { top: -4px; left: -4px; border-right: none; border-bottom: none; }
+  .glyph::after { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+
+  .glyph svg {
+    width: 28px; height: 28px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+  }
+
+  .stele-title {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .stele-meta {
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ========== WORD LISTS ========== */
+  .words {
+    list-style: none;
+  }
+
+  .words li {
+    padding: 6px 0;
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    color: var(--text);
+    border-bottom: 1px solid rgba(221, 208, 178, 0.04);
+    letter-spacing: 0.005em;
+    transition: color 0.25s ease, padding-left 0.25s ease;
+    cursor: default;
+    text-align: center;
+  }
+
+  .words li:hover {
+    color: var(--accent);
+  }
+
+  .words li:last-child { border-bottom: none; }
+
+  .section-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 22px 0 12px;
+  }
+
+  .section-mark-line {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .section-mark-text {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .words.states li {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 14px;
+    border-bottom: 1px dotted rgba(221, 208, 178, 0.05);
+  }
+
+  .words.states li:hover {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* ========== COLOR THEMES (per stele) ========== */
+  .stele.s-gniv {
+    --accent: #C25234;       /* іржа, кров, вогонь ковальні */
+    --accent-dim: rgba(194, 82, 52, 0.3);
+  }
+  .stele.s-strakh {
+    --accent: #8E8579;       /* холодне залізо, попіл */
+    --accent-dim: rgba(142, 133, 121, 0.3);
+  }
+  .stele.s-sum {
+    --accent: #5F6A5C;       /* мох, пилюка, тінь */
+    --accent-dim: rgba(95, 106, 92, 0.3);
+  }
+  .stele.s-radist {
+    --accent: #C28A2E;       /* старе золото, бронза, мед */
+    --accent-dim: rgba(194, 138, 46, 0.3);
+  }
+  .stele.s-lyubov {
+    --accent: #A86142;       /* теракота, глина, вогонь хатнього вогнища */
+    --accent-dim: rgba(168, 97, 66, 0.3);
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    margin-top: 56px;
+    padding-top: 32px;
+    text-align: center;
+  }
+
+  .footer-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .footer-rule-line {
+    width: 100px; height: 1px;
+    background: var(--rule);
+  }
+
+  .footer-rule-mark {
+    color: var(--text-muted);
+    font-size: 8px;
+    letter-spacing: 0.4em;
+  }
+
+  .creed {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .creed strong {
+    font-style: normal;
+    font-weight: 500;
+    color: #B98A3A;
+  }
+
+  .footer-meta {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header class="header">
+    <div class="ornament">
+      <span class="ornament-line"></span>
+      <span class="ornament-mark">· · ·</span>
+      <span class="ornament-line"></span>
+    </div>
+    <div class="eyebrow">Чоловіче коло · Карта почуттів</div>
+    <h1 class="title">Гамма <em>емоцій</em><br>та почуттів</h1>
+    <p class="subtitle">П'ять імен, з яких народжуються всі стани. Помітити. Назвати. Витримати. Прожити.</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- I. ГНІВ -->
+    <section class="stele s-gniv">
+      <span class="numerus">I</span>
+      <div class="stele-head">
+        <div class="glyph" aria-hidden="true">
+          <!-- спис, лезо вгору -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2 L18 12 L14 12 L14 22 L10 22 L10 12 L6 12 Z"/>
+            <path d="M8 10 L16 10" opacity="0.5"/>
+          </svg>
+        </div>
+        <h2 class="stele-title">ГНІВ</h2>
+        <p class="stele-meta">Сила · межа · вогонь</p>
+      </div>
+      <ul class="words">
+        <li>Лють</li>
+        <li>Ненависть</li>
+        <li>Злість</li>
+        <li>Роздратування</li>
+        <li>Презирство</li>
+        <li>Обурення</li>
+        <li>Образа</li>
+        <li>Ревність</li>
+        <li>Вразливість</li>
+        <li>Прикрість</li>
+        <li>Заздрість</li>
+        <li>Неприязнь</li>
+        <li>Відраза</li>
+      </ul>
+      <div class="section-mark">
+        <span class="section-mark-line"></span>
+        <span class="section-mark-text">Стани</span>
+        <span class="section-mark-line"></span>
+      </div>
+      <ul class="words states">
+        <li>Нехтування</li>
+        <li>Невдоволення</li>
+        <li>Шкідливість</li>
+        <li>Прикрість</li>
+        <li>Нетерпіння</li>
+        <li>Вседозволеність</li>
+      </ul>
+    </section>
+
+    <!-- II. СТРАХ -->
+    <section class="stele s-strakh">
+      <span class="numerus">II</span>
+      <div class="stele-head">
+        <div class="glyph" aria-hidden="true">
+          <!-- щит з перекладиною (Algiz-подібна руна оборони) -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3 L21 8 L21 14 C21 18 17 21 12 22 C7 21 3 18 3 14 L3 8 Z"/>
+            <path d="M7 13 L17 13"/>
+            <path d="M12 7 L12 18" opacity="0.6"/>
+          </svg>
+        </div>
+        <h2 class="stele-title">СТРАХ</h2>
+        <p class="stele-meta">Сторожа · поріг</p>
+      </div>
+      <ul class="words">
+        <li>Жах</li>
+        <li>Відчай</li>
+        <li>Переляк</li>
+        <li>Заціпеніння</li>
+        <li>Підозра</li>
+        <li>Тривога</li>
+        <li>Ошелешення</li>
+        <li>Неспокій</li>
+        <li>Боязнь</li>
+        <li>Приниження</li>
+        <li>Збентеження</li>
+        <li>Розгубленість</li>
+        <li>Провина, сором</li>
+        <li>Сумнів</li>
+        <li>Сором'язливість</li>
+        <li>Побоювання</li>
+        <li>Зніяковілість</li>
+        <li>Зломленість</li>
+        <li>Підступ</li>
+        <li>Гордовитість</li>
+        <li>Приголомшеність</li>
+      </ul>
+      <div class="section-mark">
+        <span class="section-mark-line"></span>
+        <span class="section-mark-text">Стани</span>
+        <span class="section-mark-line"></span>
+      </div>
+      <ul class="words states">
+        <li>Каяття</li>
+        <li>Безвихідь</li>
+        <li>Перевага</li>
+        <li>Зарозумілість</li>
+        <li>Неповноцінність</li>
+        <li>Незручність</li>
+        <li>Ніяковість</li>
+        <li>Апатія / байдужність</li>
+        <li>Невпевненість</li>
+      </ul>
+    </section>
+
+    <!-- III. СУМ -->
+    <section class="stele s-sum">
+      <span class="numerus">III</span>
+      <div class="stele-head">
+        <div class="glyph" aria-hidden="true">
+          <!-- перевернутий трикутник з рискою — давня позначка води/смутку, "стихла чаша" -->
+          <svg viewBox="0 0 24 24">
+            <path d="M3 5 L21 5 L12 22 Z"/>
+            <path d="M7 13 L17 13"/>
+          </svg>
+        </div>
+        <h2 class="stele-title">СУМ</h2>
+        <p class="stele-meta">Глибина · тиша · спадання</p>
+      </div>
+      <ul class="words">
+        <li>Гіркота</li>
+        <li>Скорбота</li>
+        <li>Лінь</li>
+        <li>Жалість</li>
+        <li>Відчуженість</li>
+        <li>Відчай</li>
+        <li>Безпорадність</li>
+        <li>Душевний біль</li>
+        <li>Безнадійність</li>
+        <li>Відчуження</li>
+        <li>Розчарування</li>
+        <li>Співчуття</li>
+        <li>Нудьга</li>
+        <li>Безвихідь</li>
+        <li>Сум</li>
+        <li>Загнаність</li>
+      </ul>
+      <div class="section-mark">
+        <span class="section-mark-line"></span>
+        <span class="section-mark-text">Стани</span>
+        <span class="section-mark-line"></span>
+      </div>
+      <ul class="words states">
+        <li>Втома</li>
+        <li>Примушення</li>
+        <li>Самотність</li>
+        <li>Відторгнутість</li>
+        <li>Пригнічення</li>
+        <li>Холодність</li>
+        <li>Безучасність</li>
+        <li>Байдужість</li>
+      </ul>
+    </section>
+
+    <!-- IV. РАДІСТЬ -->
+    <section class="stele s-radist">
+      <span class="numerus">IV</span>
+      <div class="stele-head">
+        <div class="glyph" aria-hidden="true">
+          <!-- сонячне коло з променями — соляр -->
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2 L12 5"/>
+            <path d="M12 19 L12 22"/>
+            <path d="M2 12 L5 12"/>
+            <path d="M19 12 L22 12"/>
+            <path d="M4.9 4.9 L7 7"/>
+            <path d="M17 17 L19.1 19.1"/>
+            <path d="M4.9 19.1 L7 17"/>
+            <path d="M17 7 L19.1 4.9"/>
+          </svg>
+        </div>
+        <h2 class="stele-title">РАДІСТЬ</h2>
+        <p class="stele-meta">Підйом · світло · потік</p>
+      </div>
+      <ul class="words">
+        <li>Щастя</li>
+        <li>Захват</li>
+        <li>Тріумфування</li>
+        <li>Піднесення</li>
+        <li>Пожвавлення</li>
+        <li>Умиротворення</li>
+        <li>Захоплення</li>
+        <li>Цікавість</li>
+        <li>Турбота</li>
+        <li>Очікування</li>
+        <li>Збудження</li>
+        <li>Передчуття</li>
+        <li>Надія</li>
+        <li>Звільнення</li>
+        <li>Прийняття</li>
+        <li>Нетерпіння</li>
+        <li>Віра</li>
+        <li>Здивування</li>
+      </ul>
+      <div class="section-mark">
+        <span class="section-mark-line"></span>
+        <span class="section-mark-text">Стани</span>
+        <span class="section-mark-line"></span>
+      </div>
+      <ul class="words states">
+        <li>Задоволення</li>
+        <li>Впевненість</li>
+        <li>Вдоволення</li>
+        <li>Урочистість</li>
+        <li>Життєрадісність</li>
+        <li>Полегшення</li>
+        <li>Підбадьорення</li>
+        <li>Здивування</li>
+      </ul>
+    </section>
+
+    <!-- V. ЛЮБОВ -->
+    <section class="stele s-lyubov">
+      <span class="numerus">V</span>
+      <div class="stele-head">
+        <div class="glyph" aria-hidden="true">
+          <!-- хатнє вогнище: полум'я на горизонтальній основі -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 4 C10 8 8 10 8 14 C8 17 10 19 12 19 C14 19 16 17 16 14 C16 10 14 8 12 4 Z"/>
+            <path d="M11 14 C11 12 12 11 12 11 C12 11 13 12 13 14" opacity="0.5"/>
+            <path d="M4 22 L20 22"/>
+            <path d="M5 20 L19 20" opacity="0.5"/>
+          </svg>
+        </div>
+        <h2 class="stele-title">ЛЮБОВ</h2>
+        <p class="stele-meta">Зв'язок · вогнище · довіра</p>
+      </div>
+      <ul class="words">
+        <li>Ніжність</li>
+        <li>Теплота</li>
+        <li>Співчуття</li>
+        <li>Блаженство</li>
+        <li>Довіра</li>
+        <li>Безпека</li>
+        <li>Подяка</li>
+        <li>Спокій</li>
+        <li>Симпатія</li>
+        <li>Ідентичність</li>
+        <li>Гордість</li>
+        <li>Захоплення</li>
+        <li>Повага</li>
+        <li>Самоцінність</li>
+        <li>Закоханість</li>
+        <li>Любов до себе</li>
+        <li>Зачарованість</li>
+        <li>Смиренність</li>
+        <li>Щирість</li>
+        <li>Дружелюбність</li>
+        <li>Доброта</li>
+      </ul>
+      <div class="section-mark">
+        <span class="section-mark-line"></span>
+        <span class="section-mark-text">Стани</span>
+        <span class="section-mark-line"></span>
+      </div>
+      <ul class="words states">
+        <li>Співпереживання</li>
+        <li>Співпричетність</li>
+        <li>Врівноваженість</li>
+        <li>Смиренність</li>
+        <li>Природність</li>
+        <li>Життєлюбство</li>
+        <li>Натхнення</li>
+        <li>Наснага</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-rule">
+      <span class="footer-rule-line"></span>
+      <span class="footer-rule-mark">◆</span>
+      <span class="footer-rule-line"></span>
+    </div>
+    <p class="creed">Що <strong>не назване</strong> — керує тобою.<br>Що <strong>назване</strong> — нарешті стає твоїм.</p>
+    <p class="footer-meta">Чоловіче коло · Матеріал для саморефлексії</p>
+  </footer>
+
+</div>
+</body>
+</html>
